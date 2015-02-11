@@ -11,8 +11,9 @@ def index():
     'February 18', 'Thursday': 'February 19', 'Friday': 'February 20'}
     
     format = 'json'
-    key = '2465882af2fee42b7d73e7eff35d377e'
+    key = ''
     load=ebd.Request(key, format)
+    cookies = {}
     
     Monday = ebd.Day('monday', load)
     Tuesday = ebd.Day('tuesday', load)
@@ -23,11 +24,11 @@ def index():
     week={'Monday': Monday, 'Tuesday': Tuesday, 'Wednesday': Wednesday, 
     'Thursday': Thursday, 'Friday': Friday}
 
-    rooms =  {i : ebd.INFO(week.get(i)).getRooms() for i in week}
+    rooms =  {i : ebd.INFO(week.get(i), cookie=cookies ).getRooms() for i in week}
 
-    roomEvents = {i : ebd.INFO(week.get(i)).getEventsPerRoom() for i in week}
+    roomEvents = {i : ebd.INFO(week.get(i), cookie=cookies).getEventsPerRoom() for i in week}
     
-    eventInfo = {i : ebd.INFO(week.get(i)).getEventInfo() for i in week}
+    eventInfo = {i : ebd.INFO(week.get(i), cookie=cookies).getEventInfo() for i in week}
     
     
     return render_template('/Tmp2/basetmpTable.htm',

@@ -70,7 +70,7 @@ class Day(object):
 '''
 if __name__=='__main__':
     format = 'json'
-    key = '2465882af2fee42b7d73e7eff35d377e'
+    
     load=Request(key, format)
     tuesday = Day('tuesday', load)
     ##print 'tuesday:',tuesday.daysEvents
@@ -82,11 +82,12 @@ if __name__=='__main__':
 
 class INFO(object):
   
-    def __init__(self, day):
+    def __init__(self, day, cookie=None):
         self.day = day.daysEvents
         self.rooms = []
         self.roomEvents = {}
-        self.eventInfo = {}  
+        self.eventInfo = {} 
+        self.cookies = cookie 
     
     
     def cleanData(self, description):
@@ -185,8 +186,7 @@ class INFO(object):
            
     def soup(self):
         url = ("https://m3aawg33.sched.org/grid-full")
-        cookie = {'token': 's%3A128%3A%22pDL9ntrG9FoabtgR6QCB3haf8aQg2Ah40ovAJvqlESnt4jbdLGtNG17cQEVCvOcJsB3O7MWbAiNCprbpUo52CVReUN8bmna5tmWvDfnk8fOb1QArAKL1wbo02KOD98hn%22%3B' }
-        
+        cookie = self.cookies
         resp = requests.post(url, cookies=cookie)
         soup = BeautifulSoup(resp.content)
         return soup
@@ -232,16 +232,16 @@ class INFO(object):
         return self.eventInfo
         
 
-   
+'''   
 if __name__ == '__main__':
     format = 'json'
-    key = '2465882af2fee42b7d73e7eff35d377e'
+    key = bla bla
     load=Request(key, format)
     tuesday=Day('wednesday', load)
     ##print tuesday.daysEvents
-    info = INFO(tuesday)
-    
+    info = INFO(tuesday, cookie = )
     ##print info.getRooms()
     ##print info.getEventsPerRoom()
     print info.getEventInfo().get('M3AAWG Night Out')
     
+'''
