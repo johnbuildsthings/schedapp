@@ -1,6 +1,4 @@
 # -*- coding: UTF-8 -*-
-import sys
-sys.path.insert(0, '/home/john/Enthought/Canopy_64bit/User/lib/python2.7/site-packages')
 from bs4 import BeautifulSoup
 import re
 import requests
@@ -66,17 +64,6 @@ class Day(object):
             else:
                 continue
     
-
-'''
-if __name__=='__main__':
-    format = 'json'
-    
-    load=Request(key, format)
-    tuesday = Day('tuesday', load)
-    ##print 'tuesday:',tuesday.daysEvents
-    print 'number of events:', tuesday.numEvents
-    print 'first event:', tuesday.daysEvents[0]['name']
-'''
 
 
 
