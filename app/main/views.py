@@ -4,7 +4,7 @@ from . import main
 import newRequest as ebd
 
 
-def stuff(key, cookie):
+def stuff(key, cookies):
     format = 'json'
     load=ebd.Request(key, format)
     

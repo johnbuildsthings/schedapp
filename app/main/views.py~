@@ -4,16 +4,9 @@ from . import main
 import newRequest as ebd
 
 
-@main.route('/')
-def index():
-    days=['Monday','Tuesday','Wednesday','Thursday','Friday']
-    date = {'Monday': 'February 16', 'Tuesday': 'February 17', 'Wednesday': 
-    'February 18', 'Thursday': 'February 19', 'Friday': 'February 20'}
-    
+def stuff(key, cookies):
     format = 'json'
-    key = ''
     load=ebd.Request(key, format)
-    cookies = {}
     
     Monday = ebd.Day('monday', load)
     Tuesday = ebd.Day('tuesday', load)
@@ -30,6 +23,22 @@ def index():
     
     eventInfo = {i : ebd.INFO(week.get(i), cookie=cookies).getEventInfo() for i in week}
     
+    return {'week':week, 'rooms':rooms, 'roomEvents':roomEvents, 'eventInfo':eventInfo}
+    
+key = '2465882af2fee42b7d73e7eff35d377e'
+cookie = {'token': 's%3A128%3A%22pDL9ntrG9FoabtgR6QCB3haf8aQg2Ah40ovAJvqlESnt4jbdLGtNG17cQEVCvOcJsB3O7MWbAiNCprbpUo52CVReUN8bmna5tmWvDfnk8fOb1QArAKL1wbo02KOD98hn%22%3B'}    
+stuff = stuff(key, cookie)
+
+
+@main.route('/')
+def index():
+    days=['Monday','Tuesday','Wednesday','Thursday','Friday']
+    date = {'Monday': 'February 16', 'Tuesday': 'February 17', 'Wednesday': 
+    'February 18', 'Thursday': 'February 19', 'Friday': 'February 20'}
+    week = stuff.get('week')
+    rooms = stuff.get('rooms')
+    roomEvents = stuff.get('roomEvents')
+    eventInfo = stuff.get('eventInfo')
     
     return render_template('/Tmp2/basetmpTable.htm',
                             days = days,
