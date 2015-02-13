@@ -22,7 +22,7 @@ height:93%;
 
 
 #wrapper{
-width:95%;
+width:93%;
 height:100%;
 left:5%;
 float:right;
@@ -34,9 +34,9 @@ overflow-y:hidden;
 }
 
 #list{
-width:5%;
+width:7%;
 height:75vh;
-margin-top:11.45vh;
+margin-top:11.50vh;
 float:left;
 
 }
@@ -51,7 +51,7 @@ list-style:none;
 }li{
 margin:0px;
 padding:0px;
-height:3.25vh;
+height:3.3vh;
 border-top:1px solid;
 }
 

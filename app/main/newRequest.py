@@ -204,7 +204,7 @@ class INFO(object):
             end = event['eventEnd']
             time = self.editTime(start, end)
             if name == "M3AAWG Night Out":
-               time = (71.59, 75.00)
+               time = (71.59, 3.41)
             day = event['day']
             
             description = self.cleanData(event['description'])
