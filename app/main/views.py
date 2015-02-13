@@ -4,12 +4,9 @@ from . import main
 import newRequest as ebd
 
 
-def stuff():
+def stuff(key, cookie):
     format = 'json'
-    key = '2465882af2fee42b7d73e7eff35d377e'
     load=ebd.Request(key, format)
-    cookies = {'token': 's%3A128%3A%22pDL9ntrG9FoabtgR6QCB3haf8aQg2Ah40ovAJvqlESnt4jbdLGtNG17cQEVCvOcJsB3O7MWbAiNCprbpUo52CVReUN8bmna5tmWvDfnk8fOb1QArAKL1wbo02KOD98hn%22%3B'}
-    
     
     Monday = ebd.Day('monday', load)
     Tuesday = ebd.Day('tuesday', load)
@@ -28,7 +25,9 @@ def stuff():
     
     return {'week':week, 'rooms':rooms, 'roomEvents':roomEvents, 'eventInfo':eventInfo}
     
-stuff = stuff()
+key = ''
+cookie = {}    
+stuff = stuff(key, cookie)
 
 
 @main.route('/')
