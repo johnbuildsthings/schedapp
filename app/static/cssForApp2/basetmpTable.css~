@@ -36,7 +36,7 @@ overflow-y:hidden;
 #list{
 width:7%;
 height:75vh;
-margin-top:11.2vh;
+margin-top:11.45vh;
 float:left;
 
 }
@@ -77,9 +77,6 @@ border-radius:5px;
 background-color:grey;
 }
 
-#date{
-height:0vh;
-}
 
 #room{
 height:5vh;
