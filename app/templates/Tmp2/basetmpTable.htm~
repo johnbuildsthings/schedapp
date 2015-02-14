@@ -1,7 +1,7 @@
 <!DOCTYPE htm>
 <html>
 <head>
-<title>M3AAGW3</title>
+<title>M3AAWG33</title>
 
 <link rel="stylesheet" href="/static/cssForApp2/basetmpTable.css" type="text/css" />
 
@@ -12,7 +12,7 @@
 <body>
 
 <div id="Title">
-M3AAGW3 SCHEDULE February 2015
+M3AAWG33 SCHEDULE February 2015
 </div>
 
 
@@ -54,7 +54,7 @@ M3AAGW3 SCHEDULE February 2015
 <table id='innerT'>
 
 
-<tr>
+<tr id="date">
 <h1 style="font-size:2.75vh;">{{day}}, {{date.get(day)}}</h1>
 </tr>
 
