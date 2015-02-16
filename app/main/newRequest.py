@@ -97,7 +97,7 @@ class INFO(object):
     
     def Rooms(self):
         for event in self.day:
-            room = self.cleanData(event['venue'])
+            room = self.cleanData(str(event['venue'])).strip()
             if room in self.rooms:
                 continue
             else:
@@ -219,16 +219,16 @@ class INFO(object):
         return self.eventInfo
         
 
-'''   
+  
 if __name__ == '__main__':
     format = 'json'
-    key = bla bla
+    key = ''
+    cookie = {}
     load=Request(key, format)
     tuesday=Day('wednesday', load)
     ##print tuesday.daysEvents
-    info = INFO(tuesday, cookie = )
-    ##print info.getRooms()
+    info = INFO(tuesday, cookie = cookie)
+    print info.getRooms()
     ##print info.getEventsPerRoom()
-    print info.getEventInfo().get('M3AAWG Night Out')
+    ##print info.getEventInfo().get('M3AAWG Night Out')
     
-'''
