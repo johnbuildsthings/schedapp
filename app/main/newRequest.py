@@ -218,8 +218,7 @@ class INFO(object):
         self.EventInfo()
         return self.eventInfo
         
-
-  
+'''
 if __name__ == '__main__':
     format = 'json'
     key = ''
@@ -231,4 +230,4 @@ if __name__ == '__main__':
     print info.getRooms()
     ##print info.getEventsPerRoom()
     ##print info.getEventInfo().get('M3AAWG Night Out')
-    
+'''    
