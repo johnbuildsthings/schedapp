@@ -1,7 +1,7 @@
 <!DOCTYPE htm>
 <html>
 <head>
-<title>M3AAWG33</title>
+<title>{{title}}</title>
 
 <link rel="stylesheet" href="/static/cssForApp2/basetmpTable.css" type="text/css" />
 
@@ -12,37 +12,35 @@
 <body>
 
 <div id="Title">
-M3AAWG33 SCHEDULE February 2015
+{{title}}
 </div>
 
 
 <div id="scale">
-<ul id="list" >
-	<li> 7:00am</li>
-	<li> 7:30am</li>
-	<li> 8:00am</li>
-	<li> 8:30am</li>
-	<li> 9:00am</li>
-	<li> 9:30am</li>
-	<li>10:00am</li>
-	<li>10:30am</li>
-	<li>11:00am</li>
-	<li>11:30am</li>
-	<li>12:00pm</li>
-	<li>12:30pm</li>
-	<li> 1:00pm</li>
-	<li> 1:30pm</li>
-	<li> 2:00pm</li>
-	<li> 2:30pm</li>
-	<li> 3:00pm</li>
-	<li> 3:30pm</li>
-	<li> 4:00pm</li>
-	<li> 4:30pm</li>
-	<li> 5:00pm</li>
-	<li> 5:30pm</li>
-	<li> 6:00pm</li>
-</ul>
-
+<div class="list">
+<div class="ul" >
+	{% set counter = 0 %}
+	{% for number in range(11) %}
+	{% for num in range(2) %}
+	  {% set proTime = counter*3.41 %}
+		{% if num%2==0 %}
+			{% set min = '00' %}
+			<div class="li" style="margin-top:{{proTime}}vh;"> {{number+7}}:{{min}}</div>
+		{% else %}
+			{% set min = 30 %}
+			<div class="li" style="margin-top:{{proTime}}vh;"> {{number+7}}:{{min}}</div>
+		{% endif %}
+		
+		
+		
+		
+	
+	  {% set counter = counter+1 %}	
+	{% endfor %}
+	  {% set counter = counter+2 %}	
+	{% endfor %}
+</div>
+</div>
 
 
 <div id="wrapper">
@@ -73,7 +71,7 @@ M3AAWG33 SCHEDULE February 2015
 {% set roomNum = 0 %}
 {% for room in roomName[day] %}
 
-	<td id="innerTd" class="outer">
+	<td class="outer">
 	<div class="inner">
 	{% set eventNum = 0 %}
 	{% for event in roomEvents[day].get(room) %}

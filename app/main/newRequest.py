@@ -7,16 +7,18 @@ import json
 
 
 
-def Request(key, format):
+def Request(key, format, website):
     params = {'api_key': key, 'format': format}
     data = urllib.urlencode(params)
-    url = ("http://m3aawg33.sched.org/")
+    url = (website)
     api_req = url + 'api/event/list?' + data
     
     req = requests.get(api_req)
     apiResponse = req.text
-    load = json.loads(apiResponse)
-    
+    if format == 'json':
+        load = json.loads(apiResponse)
+    else:
+        raise ValueError('unexpected request format')    
     return load
 
 
@@ -203,7 +205,7 @@ class INFO(object):
             start = event['eventStart']
             end = event['eventEnd']
             time = self.editTime(start, end)
-            if name == "M3AAWG Night Out":
+            if int(start[:2]) >= 18:
                time = (71.59, 3.41)
             day = event['day']
             
@@ -218,15 +220,17 @@ class INFO(object):
         self.EventInfo()
         return self.eventInfo
         
-
+'''
 if __name__ == '__main__':
     format = 'json'
     key = ''
     cookie = {}
-    load=Request(key, format)
-    tuesday=Day('wednesday', load)
-    ##print tuesday.daysEvents
-    info = INFO(tuesday, cookie = cookie)
+    website = "http://m3aawg33.sched.org/"
+    load=Request(key, format, website)
+    wednesday=Day('wednesday', load)
+    ##print wednesday.daysEvents
+    info = INFO(wednesday, cookie = cookie)
     ##print info.getRooms()
-    print info.getEventsPerRoom()
-    ##print info.getEventInfo().get('M3AAWG Night Out')    
+    ##print info.getEventsPerRoom()
+    print info.getEventInfo().get('M3AAWG Night Out')    
+'''

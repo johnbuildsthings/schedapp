@@ -4,9 +4,9 @@ from . import main
 import newRequest as ebd
 
 
-def stuff(key, cookies):
+def stuff(key, cookies, website):
     format = 'json'
-    load=ebd.Request(key, format)
+    load=ebd.Request(key, format, website)
     
     Monday = ebd.Day('monday', load)
     Tuesday = ebd.Day('tuesday', load)
@@ -26,8 +26,9 @@ def stuff(key, cookies):
     return {'week':week, 'rooms':rooms, 'roomEvents':roomEvents, 'eventInfo':eventInfo}
     
 key = ''
-cookie = {}    
-stuff = stuff(key, cookie)
+cookie = {}
+website = "http://m3aawg33.sched.org/"
+stuff = stuff(key, cookie, website)
 
 
 @main.route('/')
@@ -39,8 +40,11 @@ def index():
     rooms = stuff.get('rooms')
     roomEvents = stuff.get('roomEvents')
     eventInfo = stuff.get('eventInfo')
+    title="M3AAWG33 February 2015"
+    
     
     return render_template('/Tmp2/basetmpTable.htm',
+                            title=title,
                             days = days,
                             week=week,
                             date=date,

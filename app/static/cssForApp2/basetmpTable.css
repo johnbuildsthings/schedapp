@@ -5,22 +5,41 @@ html, body{
 overflow:auto;
 }
 
+/*controls the title bar*/
 #Title{
 width:50%;
 height:7%;
 color:white;
-font-size: 4vh;
+font-size:4vh;
+vertical-align:center;
 background-color:blue;
 font-family:Georgia, serif;
 border-radius:5px;
 }
 
+/*scale is the container that houses the time list and event tables*/
 #scale{
 width:100%;
-height:93%;
+height:92.75%;
+vertical-align:baseline;
 }
 
+/*list, ul, li define the style for the time list*/
+.list{
+width:6%;
+height:75vh;
+margin-top:11.85vh;
+float:left;
+border:0px;
+}.li{
+position:absolute;
+width:99%;
+border-top:.1vh solid;
+z-index:0;
+opacity:0.4;
+}
 
+/*wrapper is the container that houses the event tables*/
 #wrapper{
 width:93%;
 height:100%;
@@ -33,27 +52,7 @@ padding:0px;
 overflow-y:hidden;
 }
 
-#list{
-width:7%;
-height:75vh;
-margin-top:11.85vh;
-float:left;
-
-}
-
-
-ul{
-margin:0px;
-padding:0px;
-border:0px;
-list-style:none;
-}li{
-margin:0px;
-padding:0px;
-height:3.25vh;
-border-top:0.10vh solid;
-}
-
+/*table is the outside table that houses a set of tables for each day*/
 #table{
 width:100%;
 height:100%;
@@ -62,12 +61,8 @@ margin:0px;
 border:0px;
 float:left;
 }
-/*#table:after{
-content:"";
-display:table;
-clear:both;
-}*/
 
+/*innerT is the inside table that houses each days events*/
 #innerT{
 width:800px;
 margin:0px;
@@ -78,19 +73,19 @@ background-color:grey;
 }
 
 
+/*room defines the styling for the each rooms name*/
 #room{
+width:100px;
 height:5vh;
 text-align:center;
 font-size:smaller;
 }
 
-#innerTd{
-width:100px;
-}
 
-/*div that holds all the events in given room */
+/*outer, inner, box are the containers that holds all the styling for all the events in each room*/
 .outer{
-height:78.7vh;
+width:100px;
+height:76.7vh;
 vertical-align:baseline;
 }
 
@@ -109,6 +104,7 @@ overflow:hidden;
 }
 
 
+/*description is the container for the pop up box that displays extra info about an event*/
 .description{
 display:none;
 width:700px;
