@@ -121,7 +121,7 @@ class INFO(object):
             ##start = start.split(' ')
             self.eventInfo[eventName] = []##sets up for the eventinfo function
             room = self.cleanData(event['venue'])
-            self.roomEvents[room].append([start, eventName])
+            self.roomEvents[str(room).strip()].append([start, eventName])
         
         for key in self.roomEvents:
             self.roomEvents[key]=sorted(self.roomEvents.get(key))
@@ -218,7 +218,7 @@ class INFO(object):
         self.EventInfo()
         return self.eventInfo
         
-'''
+
 if __name__ == '__main__':
     format = 'json'
     key = ''
@@ -227,7 +227,6 @@ if __name__ == '__main__':
     tuesday=Day('wednesday', load)
     ##print tuesday.daysEvents
     info = INFO(tuesday, cookie = cookie)
-    print info.getRooms()
-    ##print info.getEventsPerRoom()
-    ##print info.getEventInfo().get('M3AAWG Night Out')
-'''    
+    ##print info.getRooms()
+    print info.getEventsPerRoom()
+    ##print info.getEventInfo().get('M3AAWG Night Out')    
