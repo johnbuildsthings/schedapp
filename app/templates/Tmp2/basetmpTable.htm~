@@ -17,24 +17,21 @@
 
 
 <div id="scale">
-<div class="list">
-<div class="ul" >
+<div class="TOuter">
+<div class="TInner" >
 	{% set counter = 0 %}
 	{% for number in range(11) %}
 	{% for num in range(2) %}
 	  {% set proTime = counter*3.41 %}
 		{% if num%2==0 %}
 			{% set min = '00' %}
-			<div class="li" style="margin-top:{{proTime}}vh;"> {{number}}:{{min}}</div>
+			<div class="TInner" style="margin-top:{{proTime}}vh;"> {{number+7}}:{{min}}</div>
 		{% else %}
 			{% set min = 30 %}
-			<div class="li" style="margin-top:{{proTime}}vh;"> {{number}}:{{min}}</div>
+			<div class="TInner" style="margin-top:{{proTime}}vh;"> {{number+7}}:{{min}}</div>
 		{% endif %}
 		
 		
-		
-		
-	
 	  {% set counter = counter+1 %}	
 	{% endfor %}
 	  {% set counter = counter+2 %}	
@@ -49,13 +46,9 @@
 {% set dayNum = 0 %}
 {% for day in days %}
 <td>
+<div style="font-size:2.75vh;border:1px solid;">{{day}}, {{date.get(day)}}</div>
+
 <table id='innerT'>
-
-
-<tr>
-<h1 style="font-size:2.75vh;">{{day}}, {{date.get(day)}}</h1>
-</tr>
-
 
 {% set numRooms = roomName[day]|length %}
 
@@ -72,7 +65,7 @@
 {% for room in roomName[day] %}
 
 	<td class="outer">
-	<div class="inner">
+	
 	{% set eventNum = 0 %}
 	{% for event in roomEvents[day].get(room) %}
 	
@@ -86,7 +79,7 @@
 		{% set eventNum = eventNum + 1 %}
 		
 	{% endfor %}<!--end events in given room-->
-	</div><!--end inner-->
+	<!--end inner-->
 	</td>
 {% set roomNum = roomNum + 1 %}
 {% endfor %}<!--end of days events-->

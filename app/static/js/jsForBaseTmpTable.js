@@ -8,13 +8,17 @@ $('div.box').hover(function(e) {
 	
 	var after_12 = (($(this).attr('style')).split(';'))[1].split(':');
 	after_12 = after_12[1].replace('vh', '')
+	var boxSize = (($(this).attr('style')).split(';'))[2].split(':');
+	boxSize = boxSize[1].replace('vh', '');
+	var height = window.innerHeight;
+	//window.alert(boxSize)
 	
 	var num = parseInt($(this).attr('data-popbox'));
-
 	var target = '#' + ($(this).attr('data-popbox'));
  	
 	moveLeft = $(this).outerWidth();
-	moveDown = ($(target).outerHeight()-25);
+	moveDown = ($(target).outerHeight()-((height*parseInt(boxSize)/100)));
+	//window.alert(moveDown);
 	
 
 	if (num >= 400) {
