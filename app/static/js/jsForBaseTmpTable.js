@@ -11,7 +11,7 @@ $('div.box').hover(function(e) {
 	var boxSize = (($(this).attr('style')).split(';'))[2].split(':');
 	boxSize = boxSize[1].replace('vh', '');
 	var height = window.innerHeight;
-	//window.alert(boxSize)
+	//window.alert(height);
 	
 	var num = parseInt($(this).attr('data-popbox'));
 	var target = '#' + ($(this).attr('data-popbox'));
@@ -42,6 +42,30 @@ $('div.box').hover(function(e) {
 	
 	$(target).hide();
 }); 
+
+
+function shadow(){
+	//getting window width and find center
+	var mainWidth = window.innerWidth;
+	var VCenter = mainWidth/2;
+	//window.alert(VCenter);
+
+	
+	var box = document.getElementsByClassName('box');
+	//window.alert(box);
+	for (var i=0, max=box.length; i<max; i++){
+		var boxP = $(box[i]).offset();
+
+		if (boxP.left < VCenter){
+			$(box[i]).css('box-shadow', "-10px 0px 5px");
+		} else {
+			$(box[i]).css('box-shadow','10px 0px 5px');
+		};
+	};
+	
+}
+
+shadow();
 
 
 }

@@ -34,7 +34,7 @@ vertical-align:baseline;
 .TOuter{
 width:6%;
 height:76.7vh;
-margin-top:10.5vh;
+margin-top:10.25vh;
 float:left;
 border:0px;
 }.TInner{
@@ -53,6 +53,8 @@ left:6%;
 float:right;
 border:0px;
 overflow:auto;
+box-shadow: inset 0px 0px 20px blue;
+z-index:-1;
 }
 
 /*table is the outside table that houses a set of tables for each day*/
@@ -63,6 +65,7 @@ padding:0px;
 margin:0px;
 border:0px;
 float:left;
+z-index:50;
 }
 
 /*innerT is the inside table that houses each days events*/
@@ -72,6 +75,7 @@ height:95%;
 border-radius:5px;
 background-color:grey;
 vertical-align:baseline;
+z-index:50;
 }
 
 
