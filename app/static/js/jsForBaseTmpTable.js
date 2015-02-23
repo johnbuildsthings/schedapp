@@ -11,7 +11,7 @@ $('div.box').hover(function(e) {
 	var boxSize = (($(this).attr('style')).split(';'))[2].split(':');
 	boxSize = boxSize[1].replace('vh', '');
 	var height = window.innerHeight;
-	//window.alert(height);
+	//window.alert(after_12);
 	
 	var num = parseInt($(this).attr('data-popbox'));
 	var target = '#' + ($(this).attr('data-popbox'));
@@ -54,19 +54,68 @@ function shadow(){
 	var box = document.getElementsByClassName('box');
 	//window.alert(box);
 	for (var i=0, max=box.length; i<max; i++){
-		var boxP = $(box[i]).offset();
-
-		if (boxP.left < VCenter){
-			$(box[i]).css('box-shadow', "-10px 0px 5px");
+		var boxP = $(box[i]).offset().left;
+		var shadow = (VCenter - boxP)/75;
+		//window.alert((VCenter-boxP)/100);
+		if (boxP < VCenter){
+			$(box[i]).css('box-shadow', -shadow+"px 0px 5px");
 		} else {
-			$(box[i]).css('box-shadow','10px 0px 5px');
+			$(box[i]).css('box-shadow', -shadow+'px 0px 5px');
 		};
 	};
+
 	
 }
 
+
 shadow();
 
+setInterval($('div#wrapper').scroll(shadow), 10);
+
+
+function findHeight(){
+	//window.alert('hello');
+	var box = document.getElementsByClassName('box');
+	var list = document.getElementsByClassName('TOuter');
+	var TitleBar = document.getElementById('wrapper');
+	var box0;
+	//window.alert('hello');
+	for (var i=0, max=box.length; i<max; i++){
+		var start = (($(box[i]).attr('style')).split(';'))[1].split(':');
+		start = start[1].replace('vh', '');
+		if (start == 0){
+			box0= box[i];
+			break;
+		} else {
+			continue;
+		};
+	};
+	var WH = window.innerHeight;
+	var BY= $(box0).offset().top;
+	var TY= $(TitleBar).offset().top;
+	bY = ((BY - TY)/WH)*100;
+	BY = (BY - TY)/WH;
+	$(list).css('margin-top', bY+'vh');
+	
+	var LY= $(list).offset().top;
+	
+	LY = (LY - TY)/WH;
+	
+	//window.alert('y '+BY+' ly '+LY);
+	//window.alert('Title '+TY);
+	
+}
+
+findHeight();
+
+/*
+$("body").on("mouseover",function(){
+$("#wrapper").on("mousewheel", function(e, delta) {	
+	this.scrollLeft -= (delta);
+	e.preventDefault();
+}); 
+});
+*/		
 
 }
 

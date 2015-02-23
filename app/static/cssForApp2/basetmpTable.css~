@@ -37,7 +37,7 @@ height:76.7vh;
 margin-top:10.25vh;
 float:left;
 border:0px;
-}.TInner{
+}.TOuter .TInner{
 position:absolute;
 width:99%;
 border-top:1px solid;
@@ -53,7 +53,8 @@ left:6%;
 float:right;
 border:0px;
 overflow:auto;
-box-shadow: inset 0px 0px 20px blue;
+border-radius:5px;
+box-shadow: inset 0px 0px 20px;
 z-index:-1;
 }
 
@@ -94,14 +95,9 @@ vertical-align:baseline;
 position:relative;
 height:76.7vh;
 vertical-align:baseline;
-border:1px solid;
+border:0px;
 }
 
-/*
-.outer .inner{
-position:relative;
-border:1px solid;
-}*/
 
 .outer .box{
 width:98%;
@@ -111,6 +107,7 @@ background-color:red;
 border:1px solid black;
 font-size:smaller;
 overflow:hidden;
+z-index:100;
 }
 
 

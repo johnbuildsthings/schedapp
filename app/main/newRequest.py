@@ -142,8 +142,10 @@ class INFO(object):
     def editTime(self, start, end):
         """returns the pixel values for start and the height
         of the time box... must be in string with am or pm"""
-        sP = int()
-        hP = int()
+        sP = float()
+        hP = float()
+        start = start
+        end = end
         time_to_pixel = {'14:30:00': '51.15', '09:00:00': '13.64',
 '12:00:00': '34.10', '07:00:00': '0.0', '11:30:00': '30.68',
 '10:00:00': '20.46', '17:00:00': '68.20', '09:30:00': '17.05',
@@ -151,26 +153,31 @@ class INFO(object):
 '07:30:00': '3.41', '13:30:00': '44.33', '11:00:00': '27.28', 
 '10:30:00': '23.87', '15:30:00': '57.97', '16:00:00': '61.38', 
 '16:30:00': '64.79', '13:00:00': '40.92', '14:00:00': '47.74',
-'18:00:00': '75.02', '15:00:00': '54.56', '17:30:00': '71.61'}
+'18:00:00': '75.02', '15:00:00': '54.56', '17:30:00': '71.61', 
+'18:30:00': '78.43', '19:00:00': '81.84'}
         
         try:
             sP = float(time_to_pixel.get(start))
-            eP = float(time_to_pixel.get(end))
-            hP = eP - sP
         except TypeError:
-            if int(start[3:5])==15 or int(end[3:5])==15:
+            if '45' in start:
+                new = int(start[0:2])
+                start = str(new)+':30'+start[5:]
+            else:
                 new = '00'
                 start = start[0:3]+new+start[5:]
+            sP = float(time_to_pixel.get(start))
+        try:
+            eP = float(time_to_pixel.get(end))
+        except TypeError:
+            if '45' in end:
+                newE = int(end[0:2])+1
+                end = str(newE)+':00'+end[5:]
+            else:
+                new = '00'
                 end = end[0:3]+new+end[5:]
-                return self.editTime(start, end)
-                
-            elif int(start[3:5])==45 or int(end[3:5])==45:
-                new = int(start[0:2])+1
-                start = str(new)+'00'+start[5:]
-                newE = int(end[0:2])
-                end = str(newE)+'30'+end[5:]
-                sP = int(time_to_pixel.get(start))
-                eP = int(time_to_pixel.get(end))
+            eP = float(time_to_pixel.get(end))
+        hP = round(eP - sP, 4)
+        
         return [sP, hP]    
            
     def soup(self):
@@ -194,17 +201,22 @@ class INFO(object):
         soup = self.soup()
         for event in self.day:
             name = event['name']
-            eventType =  event['event_type']
+            ##eventType =  event['event_type']
+            
             try:
                 color = self.findEventColor(name, soup)
-            except AttributeError:
-                if "Administrative & Maintenance" in eventType:
-                    color = '#fa1e37'
-                else:
+                if len(color)<=0:
                     color = '#ffa00a'
+            except AttributeError:
+                color = '#ffa00a'
             start = event['eventStart']
             end = event['eventEnd']
-            time = self.editTime(start, end)
+            if int(end[:2]) >= 19:
+                end = '18:30:00'
+            try:
+                time = self.editTime(start, end)
+            except TypeError:
+                pass
             if int(start[:2]) >= 18:
                time = (71.59, 3.41)
             day = event['day']
@@ -227,10 +239,11 @@ if __name__ == '__main__':
     cookie = {}
     website = "http://m3aawg33.sched.org/"
     load=Request(key, format, website)
-    wednesday=Day('wednesday', load)
+    wednesday=Day('tuesday', load)
     ##print wednesday.daysEvents
     info = INFO(wednesday, cookie = cookie)
     ##print info.getRooms()
     ##print info.getEventsPerRoom()
-    print info.getEventInfo().get('M3AAWG Night Out')    
+    ##print info.getEventInfo().get('Full Members Election to the Board')
+    ##print info.editTime(u'12:30:00', u'13:00:00') 
 '''

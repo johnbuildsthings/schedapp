@@ -46,7 +46,7 @@
 {% set dayNum = 0 %}
 {% for day in days %}
 <td>
-<div style="font-size:2.75vh;border:1px solid;">{{day}}, {{date.get(day)}}</div>
+<div style="font-size:2.75vh;">{{day}}, {{date.get(day)}}</div>
 
 <table id='innerT'>
 
@@ -69,7 +69,7 @@
 	{% set eventNum = 0 %}
 	{% for event in roomEvents[day].get(room) %}
 	
-		<div data-popbox="{{dayNum}}{{roomNum}}{{eventNum}}" class="box" style="background-color:{{eventinfo.get(day)[event][7]}};margin-top:{{eventinfo.get(day)[event][2]}}vh;height:{{eventinfo.get(day)[event][3]}}vh;background-color:{{eventinfo.get(day)[event][8]}};">
+		<div data-popbox="{{dayNum}}{{roomNum}}{{eventNum}}" class="box" style="background-color:{{eventinfo.get(day)[event][7]}};margin-top:{{eventinfo.get(day)[event][2]}}vh;height:{{eventinfo.get(day)[event][3]}}vh;">
 		{{eventinfo.get(day)[event][0]}}	
 		</div>
 
