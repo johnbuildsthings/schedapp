@@ -43,35 +43,52 @@ $('div.box').hover(function(e) {
 	$(target).hide();
 }); 
 
+/*
+function isOnScreen(element){
+	var curPos = element.offset();
+	var curLef = curPos.left;
+	var divWidth = ($('div#wrapper').width())-50;
+	return (curLef >= divWidth && curLef <= 0) ? false : true;
+}
 
 function shadow(){
 	//getting window width and find center
-	var mainWidth = window.innerWidth;
+	var mainWidth = $('div#wrapper').width();
 	var VCenter = mainWidth/2;
-	//window.alert(VCenter);
+	//window.alert(mainWidth);
 
 	
-	var box = document.getElementsByClassName('box');
-	//window.alert(box);
+	var box = $('div.box');
+	
+	var count = 0;
 	for (var i=0, max=box.length; i<max; i++){
+		
+	  if (isOnScreen($(box[i]))) {
+		count += 1;
 		var boxP = $(box[i]).offset().left;
-		var shadow = (VCenter - boxP)/75;
-		//window.alert((VCenter-boxP)/100);
+		var shadow = (VCenter - boxP)/50;
+
+		//window.alert(shadow);
 		if (boxP < VCenter){
 			$(box[i]).css('box-shadow', -shadow+"px 0px 5px");
 		} else {
 			$(box[i]).css('box-shadow', -shadow+'px 0px 5px');
 		};
+	  };
 	};
-
-	
+//window.alert(count);	
 }
 
+window.requestAnimFrame = (function(){
+return window.requestAnimationFrame ||
+	window.mozRequestAnimationFrame;
+})();
 
 shadow();
 
-setInterval($('div#wrapper').scroll(shadow), 10);
+requestAnimFrame($('div#wrapper').scroll(shadow));
 
+*/
 
 function findHeight(){
 	//window.alert('hello');
@@ -106,9 +123,13 @@ function findHeight(){
 	
 }
 
-findHeight();
-
+$(window).resize(findHeight);
 /*
+$('div#wrapper').scroll(function(e, delta){
+	this.scrollLeft -= (delta);
+	e.preventDefault();
+}
+
 $("body").on("mouseover",function(){
 $("#wrapper").on("mousewheel", function(e, delta) {	
 	this.scrollLeft -= (delta);

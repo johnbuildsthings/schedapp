@@ -5,7 +5,7 @@ html, body{
 overflow:auto;
 }
 
-td, tr, h1, table, #room, #outer, #inner, #innerT, #Title, #scale, #wrapper, .TOuter, .TInner{
+td, tr, h1, table, #room, #outer, #inner, #innerT, #Title, #scale, #wrapper, .TOuter, .TInner, #table{
 margin:0px;
 border:0px;
 padding:0px
@@ -54,17 +54,14 @@ float:right;
 border:0px;
 overflow:auto;
 border-radius:5px;
-box-shadow: inset 0px 0px 20px;
-z-index:-1;
+box-shadow: inset 1px 1px 20px;
+z-index:10;
 }
 
 /*table is the outside table that houses a set of tables for each day*/
 #table{
 width:100%;
 height:100%;
-padding:0px;
-margin:0px;
-border:0px;
 float:left;
 z-index:50;
 }
@@ -76,7 +73,7 @@ height:95%;
 border-radius:5px;
 background-color:grey;
 vertical-align:baseline;
-z-index:50;
+z-index:-50;
 }
 
 
@@ -107,7 +104,15 @@ background-color:red;
 border:1px solid black;
 font-size:smaller;
 overflow:hidden;
-z-index:100;
+z-index:50;
+-webkit-transition: box-shadow 2s, z-index;
+-moz-transition: box-shadow 2s, z-index;
+transition: box-shadow 2s, z-index 2s;
+}
+
+.outer .box:hover{
+box-shadow:-10px 10px 5px;
+z-index:500;
 }
 
 
