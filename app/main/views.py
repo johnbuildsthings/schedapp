@@ -26,7 +26,7 @@ def stuff(key, cookies, website):
     return {'week':week, 'rooms':rooms, 'roomEvents':roomEvents, 'eventInfo':eventInfo}
     
 key = ''
-cookie = {}
+cookie = { }
 website = "http://m3aawg33.sched.org/"
 stuff = stuff(key, cookie, website)
 

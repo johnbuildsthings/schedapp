@@ -9,7 +9,7 @@ class Config:
         pass
         
 class DevelopmentConfig(Config):
-    DEBUG=True
+    DEBUG=False
     
 
 config={'default': DevelopmentConfig}
