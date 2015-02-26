@@ -43,7 +43,7 @@ $('div.box').hover(function(e) {
 	$(target).hide();
 }); 
 
-/*
+
 function isOnScreen(element){
 	var curPos = element.offset();
 	var curLef = curPos.left;
@@ -79,16 +79,12 @@ function shadow(){
 //window.alert(count);	
 }
 
-window.requestAnimFrame = (function(){
-return window.requestAnimationFrame ||
-	window.mozRequestAnimationFrame;
-})();
 
 shadow();
 
-requestAnimFrame($('div#wrapper').scroll(shadow));
+$('div#wrapper').scroll(shadow);
 
-*/
+
 
 function findHeight(){
 	//window.alert('hello');
@@ -114,15 +110,9 @@ function findHeight(){
 	BY = (BY - TY)/WH;
 	$(list).css('margin-top', bY+'vh');
 	
-	var LY= $(list).offset().top;
-	
-	LY = (LY - TY)/WH;
-	
-	//window.alert('y '+BY+' ly '+LY);
-	//window.alert('Title '+TY);
-	
 }
 
+findHeight();
 $(window).resize(findHeight);
 /*
 $('div#wrapper').scroll(function(e, delta){

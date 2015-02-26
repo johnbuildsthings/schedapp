@@ -5,7 +5,7 @@ html, body{
 overflow:auto;
 }
 
-td, tr, h1, table, #room, #outer, #inner, #innerT, #Title, #scale, #wrapper, .TOuter, .TInner, #table{
+tr, h1, table, .room, .outer, .inner, #innerT, #Title, #scale, #wrapper, .TOuter, .TInner, #table{
 margin:0px;
 border:0px;
 padding:0px
@@ -16,7 +16,7 @@ padding:0px
 width:50%;
 height:7%;
 color:white;
-font-size:4vh;
+font-size:2.5vw;
 vertical-align:center;
 background-color:blue;
 font-family:Georgia, serif;
@@ -32,9 +32,9 @@ vertical-align:baseline;
 
 /*list, ul, li define the style for the time list*/
 .TOuter{
+display: inline-block;
 width:6%;
 height:76.7vh;
-margin-top:10.25vh;
 float:left;
 border:0px;
 }.TOuter .TInner{
@@ -66,9 +66,16 @@ float:left;
 z-index:50;
 }
 
+/*day is the styling for the day label above each table*/
+#day{
+height:4vh;
+font-size:90%;
+font-weight:900;
+}
+
 /*innerT is the inside table that houses each days events*/
 #innerT{
-width:800px;
+width:100%;
 height:95%;
 border-radius:5px;
 background-color:grey;
@@ -78,41 +85,44 @@ z-index:-50;
 
 
 /*room defines the styling for the each rooms name*/
-#room{
-width:100px;
+.room{
 height:5vh;
 text-align:center;
-font-size:smaller;
+font-size:90%;
 vertical-align:baseline;
 }
 
 
 /*outer, inner, box are the containers that holds all the styling for all the events in each room*/
 .outer{
+width:100%;
 position:relative;
 height:76.7vh;
 vertical-align:baseline;
 border:0px;
 }
 
+/*inner controls the width of all the events*/
+.outer .inner{
+width:150px;
+}
 
-.outer .box{
+.outer .inner .box{
 width:98%;
 position:absolute;
 border-radius:5px;
 background-color:red;
 border:1px solid black;
-font-size:smaller;
+font-size:100%;
 overflow:hidden;
 z-index:50;
--webkit-transition: box-shadow 2s, z-index;
--moz-transition: box-shadow 2s, z-index;
-transition: box-shadow 2s, z-index 2s;
+-webkit-transition: box-shadow 1s;
+-moz-transition: box-shadow 1s;
+transition: box-shadow 1s;
 }
 
 .outer .box:hover{
 box-shadow:-10px 10px 5px;
-z-index:500;
 }
 
 
@@ -132,4 +142,89 @@ z-index:200;
 
 
 
+@media screen and (max-width: 768px){
+
+#Title{
+width:50%;
+height:6%;
+font-size:2.5vw;
+}
+
+#scale{
+width:100%;
+height:94%;
+}
+
+.TOuter{
+width:6%;
+}.TOuter .TInner{
+font-size:1.25vw;
+}
+
+#wrapper{
+width:94%;
+height:100%;
+}
+
+#day{
+font-size:65%;
+}
+
+.room{
+height:2.5vh;
+font-size:20%;
+}
+.outer .inner{
+width:75px;
+}
+
+.outer .inner .box{
+font-size:50%;
+}
+
+.description{
+width:400%;
+height:50%;
+}
+}
+@media screen and (max-width: 480px){
+
+#Title{
+width:90%;
+height:5%;
+font-size:5vw;
+}
+
+#scale{
+width:100%;
+height:95%;
+}
+
+.TOuter{
+width:9%;
+}.TOuter .TInner{
+font-size:2.5vw;
+}
+
+#wrapper{
+width:91%;
+}
+
+#day{
+font-size:75%;
+}
+
+.room{
+height:2.5vh;
+font-size:20%;
+}
+.outer .inner{
+width:50px;
+}
+
+.description{
+width:400%;
+height:50%;
+}
+}
 

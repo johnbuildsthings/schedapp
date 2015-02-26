@@ -1,11 +1,16 @@
 <!DOCTYPE htm>
 <html>
 <head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{title}}</title>
 
 <link rel="stylesheet" href="/static/cssForApp2/basetmpTable.css" type="text/css" />
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
+<script src="jquery.mousewheel.js" type="text/javascript"></script>
+
 
 
 </head>
@@ -46,7 +51,8 @@
 {% set dayNum = 0 %}
 {% for day in days %}
 <td>
-<div style="font-size:2.75vh;">{{day}}, {{date.get(day)}}</div>
+
+<div id="day">{{day}}, {{date.get(day)}}</div>
 
 <table id='innerT'>
 
@@ -55,7 +61,7 @@
 <tr>
 {% for room in roomName[day] %}
 
-<td id="room">{{room}}</td>
+<td id="roomEvents" class='room'>{{room}}</td>
 
 {% endfor %}
 </tr>
@@ -64,8 +70,8 @@
 {% set roomNum = 0 %}
 {% for room in roomName[day] %}
 
-	<td class="outer">
-	
+	<td id="roomEvents" class="outer">
+	<div class="inner">
 	{% set eventNum = 0 %}
 	{% for event in roomEvents[day].get(room) %}
 	
@@ -79,7 +85,7 @@
 		{% set eventNum = eventNum + 1 %}
 		
 	{% endfor %}<!--end events in given room-->
-	<!--end inner-->
+	</div><!--end inner-->
 	</td>
 {% set roomNum = roomNum + 1 %}
 {% endfor %}<!--end of days events-->
