@@ -34,9 +34,9 @@ class Day(object):
     
     
     def findDay(self, infoLine):
-        Map = {'2015-02-16' : 'monday', '2015-02-17' : 'tuesday',
-'2015-02-18' : 'wednesday', '2015-02-19' : 'thursday', 
-'2015-02-20' : 'friday'}
+        Map = {'2015-06-08' : 'monday', '2015-06-09' : 'tuesday',
+'2015-06-10' : 'wednesday', '2015-06-11' : 'thursday', 
+'2015-06-12' : 'friday'}
         start = infoLine[u'event_start']
         date = start.split(' ')[0]
         return Map.get(date)
@@ -71,8 +71,9 @@ class Day(object):
 
 class INFO(object):
   
-    def __init__(self, day, cookie=None):
+    def __init__(self, day, website, cookie=None):
         self.day = day.daysEvents
+        self.website = website
         self.rooms = []
         self.roomEvents = {}
         self.eventInfo = {} 
@@ -181,7 +182,7 @@ class INFO(object):
         return [sP, hP]    
            
     def soup(self):
-        url = ("https://m3aawg33.sched.org/grid-full")
+        url = (self.website+"/grid-full")
         cookie = self.cookies
         resp = requests.post(url, cookies=cookie)
         soup = BeautifulSoup(resp.content)
@@ -206,17 +207,21 @@ class INFO(object):
             try:
                 color = self.findEventColor(name, soup)
                 if len(color)<=0:
-                    color = '#ffa00a'
+                    color = '#ffffff'
             except AttributeError:
-                color = '#ffa00a'
+                color = '#ffffff'
             start = event['eventStart']
             end = event['eventEnd']
-            if int(end[:2]) >= 19:
-                end = '18:30:00'
             try:
-                time = self.editTime(start, end)
-            except TypeError:
-                pass
+                if int(end[:2]) >= 19:
+                    end = '18:30:00'
+                try:
+                    time = self.editTime(start, end)
+                except TypeError:
+                    pass
+            except ValueError:
+               start = "08:00:00"
+               end = "09:00:00"
             if int(start[:2]) >= 18:
                time = (71.59, 3.41)
             day = event['day']
@@ -237,13 +242,13 @@ if __name__ == '__main__':
     format = 'json'
     key = ''
     cookie = {}
-    website = "http://m3aawg33.sched.org/"
+    website = "http://m3aawg34.sched.org/"
     load=Request(key, format, website)
-    wednesday=Day('tuesday', load)
+    wednesday=Day('wednesday', load)
     ##print wednesday.daysEvents
-    info = INFO(wednesday, cookie = cookie)
+    info = INFO(wednesday, website, cookie = cookie)
     ##print info.getRooms()
     ##print info.getEventsPerRoom()
-    ##print info.getEventInfo().get('Full Members Election to the Board')
-    ##print info.editTime(u'12:30:00', u'13:00:00') 
-'''
+    print info.getEventInfo() 
+'''   
+
