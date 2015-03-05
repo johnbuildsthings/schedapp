@@ -25,8 +25,8 @@ def stuff(key, cookies, website):
     
     return {'week':week, 'rooms':rooms, 'roomEvents':roomEvents, 'eventInfo':eventInfo}
     
-key = ''
-cookie = {}
+key = '93c5b2c7d6a01f93c1fc704e6870ca9d'
+cookie = {'token': 's%3A128%3A%22pDL9ntrG9FoabtgR6QCB3haf8aQg2Ah40ovAJvqlESnt4jbdLGtNG17cQEVCvOcJsB3O7MWbAiNCprbpUo52CVReUN8bmna5tmWvDfnk8fOb1QArAKL1wbo02KOD98hn%22%3B'}
 website = "http://m3aawg34.sched.org/"
 stuff = stuff(key, cookie, website)
 
@@ -40,7 +40,7 @@ def index():
     rooms = stuff.get('rooms')
     roomEvents = stuff.get('roomEvents')
     eventInfo = stuff.get('eventInfo')
-    title="M3AAWG33 June 2015"
+    title="M3AAWG34 June 2015"
     
     
     return render_template('/Tmp2/basetmpTable.htm',
