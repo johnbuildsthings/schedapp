@@ -79,10 +79,6 @@ function shadow(){
 //window.alert(count);	
 }
 
-window.requestAnimFrame = (function(){
-return window.requestAnimationFrame ||
-	window.mozRequestAnimationFrame;
-})();
 
 shadow();
 
