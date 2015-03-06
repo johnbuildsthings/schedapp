@@ -40,7 +40,7 @@ def index():
     rooms = stuff.get('rooms')
     roomEvents = stuff.get('roomEvents')
     eventInfo = stuff.get('eventInfo')
-    title="M3AAWG34 June 2015"
+    title="M3AAWG35 June 2015"
     
     
     return render_template('/Tmp2/basetmpTable.htm',
