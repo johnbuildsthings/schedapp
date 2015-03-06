@@ -18,8 +18,7 @@ def updateApp():
 def deploy():
 	code_dir = '/home/ec2-user/m3aawgApp.git/app'
 		
-	if run(updateApp()).failed:
-		pass
+	updateApp()
 	with cd(code_dir):
 
 		run("source venv/bin/activate")
