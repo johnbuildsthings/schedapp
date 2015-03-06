@@ -4,9 +4,7 @@ import re
 import requests
 import urllib
 import json
-from . import Data
 
-data = Data.configData()
 
 
 def Request(key, format, website):
@@ -36,10 +34,9 @@ class Day(object):
     
     
     def findDay(self, infoLine):
-	Map = data['Map']
-        """Map = {'2015-06-08' : 'monday', '2015-06-09' : 'tuesday',
+        Map = {'2015-06-08' : 'monday', '2015-06-09' : 'tuesday',
 '2015-06-10' : 'wednesday', '2015-06-11' : 'thursday', 
-'2015-06-12' : 'friday'}"""
+'2015-06-12' : 'friday'}
         start = infoLine[u'event_start']
         date = start.split(' ')[0]
         return Map.get(date)

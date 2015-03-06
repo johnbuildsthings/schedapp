@@ -8,8 +8,8 @@ class Config:
     def init_app(app):
         pass
         
-class DeployConfig(Config):
+class DevelopmentConfig(Config):
     DEBUG=False
     
 
-config={'default': DeployConfig}
+config={'default': DevelopmentConfig}

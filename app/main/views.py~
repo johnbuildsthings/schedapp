@@ -1,8 +1,10 @@
 #encoding: utf-8
 from flask import render_template
 from . import main
+from . import Data
 import newRequest as ebd
 
+data = Data.configData()
 
 def stuff(key, cookies, website):
     format = 'json'
@@ -24,28 +26,33 @@ def stuff(key, cookies, website):
     eventInfo = {i : ebd.INFO(week.get(i), website, cookie=cookies).getEventInfo() for i in week}
     
     return {'week':week, 'rooms':rooms, 'roomEvents':roomEvents, 'eventInfo':eventInfo}
-    
+
+stuff = stuff(data['key'], data['cookie'], data['website'])
+
+'''
 key = '93c5b2c7d6a01f93c1fc704e6870ca9d'
 cookie = {'token': 's%3A128%3A%22pDL9ntrG9FoabtgR6QCB3haf8aQg2Ah40ovAJvqlESnt4jbdLGtNG17cQEVCvOcJsB3O7MWbAiNCprbpUo52CVReUN8bmna5tmWvDfnk8fOb1QArAKL1wbo02KOD98hn%22%3B'}
 website = "http://m3aawg34.sched.org/"
 stuff = stuff(key, cookie, website)
 
+date = {'Monday': 'June 8', 'Tuesday': 'June 9', 'Wednesday': 
+    'June 10', 'Thursday': 'June 11', 'Friday': 'June 12'}
+'''
+
 
 @main.route('/')
 def index():
     days=['Monday','Tuesday','Wednesday','Thursday','Friday']
-    date = {'Monday': 'June 8', 'Tuesday': 'June 9', 'Wednesday': 
-    'June 10', 'Thursday': 'June 11', 'Friday': 'June 12'}
     week = stuff.get('week')
     rooms = stuff.get('rooms')
     roomEvents = stuff.get('roomEvents')
     eventInfo = stuff.get('eventInfo')
-    title="M3AAWG35 June 2015"
-    
+    title = "MAAWG34 June 2015"
+    date = data['date']
     
     return render_template('/Tmp2/basetmpTable.htm',
                             title=title,
-                            days = days,
+                            days=days,
                             week=week,
                             date=date,
                             roomName=rooms,
