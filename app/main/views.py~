@@ -29,15 +29,6 @@ def stuff(key, cookies, website):
 
 stuff = stuff(data['key'], data['cookie'], data['website'])
 
-'''
-key = '93c5b2c7d6a01f93c1fc704e6870ca9d'
-cookie = {'token': 's%3A128%3A%22pDL9ntrG9FoabtgR6QCB3haf8aQg2Ah40ovAJvqlESnt4jbdLGtNG17cQEVCvOcJsB3O7MWbAiNCprbpUo52CVReUN8bmna5tmWvDfnk8fOb1QArAKL1wbo02KOD98hn%22%3B'}
-website = "http://m3aawg34.sched.org/"
-stuff = stuff(key, cookie, website)
-
-date = {'Monday': 'June 8', 'Tuesday': 'June 9', 'Wednesday': 
-    'June 10', 'Thursday': 'June 11', 'Friday': 'June 12'}
-'''
 
 
 @main.route('/')

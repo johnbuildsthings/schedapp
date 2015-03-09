@@ -21,8 +21,12 @@ $('div.box').hover(function(e) {
 	//window.alert(moveDown);
 	
 
-	if (num >= 400) {
-		$(target).css('top', 0).css('left', 0);
+	if (num >= 300) {
+	  if (after_12 >= 34.09){
+		$(target).css('top', -moveDown).css('left', -700);
+	  } else {
+ 		$(target).css('top', 0).css('left', -700);
+	  }
 	} else if (after_12 >= 34.09 ) {
 		$(target).css('top', -moveDown).css('left', moveLeft);
 	} else {
