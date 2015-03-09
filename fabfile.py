@@ -16,7 +16,7 @@ def webServerUpdate():
 	run("gunicorn manage:app")
 
 def updateApp():
-	local("git add . && git commit -m 'auto update'")
+	local("git add --all && git commit -m 'auto update'")
 	local("git push web master")
 	
 def deploy():
