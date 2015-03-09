@@ -27,3 +27,9 @@ def deploy():
 		run("pkill gunicorn")
 		run("sudo pip install -r requirements.txt")
 		run("gunicorn manage:app")
+
+def startServer():
+	code_dir = '/home/ec2-user/m3aawgApp.git/app'	
+	with cd(code_dir):
+		run("source venv/bin/activate")
+		run("gunicorn manage:app")
