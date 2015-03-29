@@ -55,6 +55,7 @@ function isOnScreen(element){
 	return (curLef >= divWidth && curLef <= 0) ? false : true;
 }
 
+
 function shadow(){
 	//getting window width and find center
 	var mainWidth = $('div#wrapper').width();
@@ -84,9 +85,9 @@ function shadow(){
 }
 
 
-shadow();
+//shadow();
 
-$('div#wrapper').scroll(shadow);
+//$('div#wrapper').scroll(shadow);
 
 
 
@@ -118,19 +119,6 @@ function findHeight(){
 
 findHeight();
 $(window).resize(findHeight);
-/*
-$('div#wrapper').scroll(function(e, delta){
-	this.scrollLeft -= (delta);
-	e.preventDefault();
-}
-
-$("body").on("mouseover",function(){
-$("#wrapper").on("mousewheel", function(e, delta) {	
-	this.scrollLeft -= (delta);
-	e.preventDefault();
-}); 
-});
-*/		
 
 }
 

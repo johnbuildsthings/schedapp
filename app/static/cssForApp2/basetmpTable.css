@@ -42,7 +42,7 @@ position:absolute;
 width:99%;
 border-top:1px solid;
 z-index:0;
-opacity:0.75;
+opacity:0.85;
 }
 
 /*wrapper is the container that houses the event tables*/
@@ -78,7 +78,7 @@ font-weight:900;
 width:100%;
 height:95%;
 border-radius:5px;
-background-color:grey;
+background-color:silver;
 vertical-align:baseline;
 z-index:-50;
 }
@@ -116,14 +116,11 @@ border:1px solid black;
 font-size:100%;
 overflow:hidden;
 z-index:50;
--webkit-transition: box-shadow 0.5s;
--moz-transition: box-shadow 0.5s;
-transition: box-shadow 0.5s;
+-webkit-box-shadow: 2px 2px 2px;
+-moz-box-shadow: 2px 2px 2px;
+box-shadow: 2px 2px 2px;
 }
 
-.outer .box:hover{
-box-shadow:-10px 10px 5px;
-}
 
 
 /*description is the container for the pop up box that displays extra info about an event*/
