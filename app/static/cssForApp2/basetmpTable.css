@@ -68,7 +68,7 @@ z-index:50;
 
 /*day is the styling for the day label above each table*/
 #day{
-height:4vh;
+height:3.5vh;
 font-size:90%;
 font-weight:900;
 }
@@ -86,7 +86,7 @@ z-index:-50;
 
 /*room defines the styling for the each rooms name*/
 .room{
-height:5vh;
+height:4.35vh;
 text-align:center;
 font-size:90%;
 vertical-align:baseline;
@@ -97,7 +97,7 @@ vertical-align:baseline;
 .outer{
 width:100%;
 position:relative;
-height:76.7vh;
+height:78.43vh;
 vertical-align:baseline;
 border:0px;
 }
