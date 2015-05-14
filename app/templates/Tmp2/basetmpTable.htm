@@ -23,79 +23,79 @@
 
 <div id="scale">
 <div class="TOuter">
-<div class="TInner" >
-	{% set counter = 0 %}
-	{% for number in range(11) %}
-	{% for num in range(2) %}
-	  {% set proTime = counter*3.41 %}
-		{% if num%2==0 %}
-			{% set min = '00' %}
-			<div class="TInner" style="margin-top:{{proTime}}vh;"> {{number+7}}:{{min}}</div>
-		{% else %}
-			{% set min = 30 %}
-			<div class="TInner" style="margin-top:{{proTime}}vh;"> {{number+7}}:{{min}}</div>
-		{% endif %}
-		
-		
-	  {% set counter = counter+1 %}	
-	{% endfor %}
-	  {% set counter = counter+2 %}	
-	{% endfor %}
-</div>
+	<div class="TInner" >
+		{% set counter = 0 %}
+		{% for number in range(11) %}
+		{% for num in range(2) %}
+		  {% set proTime = counter*3.41 %}
+			{% if num%2==0 %}
+				{% set min = '00' %}
+				<div class="TInner" style="margin-top:{{proTime}}vh;"> {{number+7}}:{{min}}</div>
+			{% else %}
+				{% set min = 30 %}
+				<div class="TInner" style="margin-top:{{proTime}}vh;"> {{number+7}}:{{min}}</div>
+			{% endif %}
+			
+			
+		  {% set counter = counter+1 %}	
+		{% endfor %}
+		  {% set counter = counter+2 %}	
+		{% endfor %}
+	</div>
 </div>
 
 
 <div id="wrapper">
-<table id='table'>
+	<table id='table'>
 
-{% set dayNum = 0 %}
-{% for day in days %}
-<td>
+	{% set dayNum = 0 %}
+	{% for day in days %}
+	<td>
 
-<div id="day">{{day}}, {{date.get(day)}}</div>
+	<div id="day">{{day}}, {{date.get(day)}}</div>
 
-<table id='innerT'>
+		<table id='innerT'>
 
-{% set numRooms = roomName[day]|length %}
+		{% set numRooms = roomName[day]|length %}
 
-<tr>
-{% for room in roomName[day] %}
+		<tr>
+		{% for room in roomName[day] %}
 
-<td class='room'>{{room}}</td>
+		<td class='room'>{{room}}</td>
 
-{% endfor %}
-</tr>
+		{% endfor %}
+		</tr>
 
-<tr>
-{% set roomNum = 0 %}
-{% for room in roomName[day] %}
+		<tr>
+		{% set roomNum = 0 %}
+		{% for room in roomName[day] %}
 
-	<td class="outer">
-	<div class="inner">
-	{% set eventNum = 0 %}
-	{% for event in roomEvents[day].get(room) %}
-	
-		<div data-popbox="{{dayNum}}{{roomNum}}{{eventNum}}" class="box" style="background-color:{{eventinfo.get(day)[event][7]}};margin-top:{{eventinfo.get(day)[event][2]}}vh;height:{{eventinfo.get(day)[event][3]}}vh;">
-		{{eventinfo.get(day)[event][0]}}	
-		</div>
+			<td class="outer">
+			<div class="inner">
+			{% set eventNum = 0 %}
+			{% for event in roomEvents[day].get(room) %}
+			
+				<div data-popbox="{{dayNum}}{{roomNum}}{{eventNum}}" class="box" style="background-color:{{eventinfo.get(day)[event][7]}};margin-top:{{eventinfo.get(day)[event][2]}}vh;height:{{eventinfo.get(day)[event][3]}}vh;">
+				{{eventinfo.get(day)[event][0]}}	
+				</div>
 
-		<div id="{{dayNum}}{{roomNum}}{{eventNum}}" class="description" style="margin-top:{{eventinfo.get(day)[event][2]}}vh;">{{eventinfo.get(day)[event][0]}}
-			<br /><br />{{eventinfo.get(day)[event][4][:5]}} - {{eventinfo.get(day)[event][5][:5]}}
-			<br /><br />{{eventinfo.get(day)[event][6]}}</div>
-		{% set eventNum = eventNum + 1 %}
-		
-	{% endfor %}<!--end events in given room-->
-	</div><!--end inner-->
+				<div id="{{dayNum}}{{roomNum}}{{eventNum}}" class="description" style="margin-top:{{eventinfo.get(day)[event][2]}}vh;">{{eventinfo.get(day)[event][0]}}
+					<br /><br />{{eventinfo.get(day)[event][4][:5]}} - {{eventinfo.get(day)[event][5][:5]}}
+					<br /><br />{{eventinfo.get(day)[event][6]}}</div>
+				{% set eventNum = eventNum + 1 %}
+				
+			{% endfor %}<!--end events in given room-->
+			</div><!--end inner-->
+			</td>
+		{% set roomNum = roomNum + 1 %}
+		{% endfor %}<!--end of days events-->
+
+		</tr>
+		</table>
 	</td>
-{% set roomNum = roomNum + 1 %}
-{% endfor %}<!--end of days events-->
-
-</tr>
-</table>
-</td>
-{% set dayNum = dayNum + 1 %}
-{% endfor %}<!--end of week-->
-</table>
+	{% set dayNum = dayNum + 1 %}
+	{% endfor %}<!--end of week-->
+	</table>
 </div><!--wrapper-->
 
 </div><!--scale-->

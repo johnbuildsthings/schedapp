@@ -90,35 +90,18 @@ function shadow(){
 //$('div#wrapper').scroll(shadow);
 
 
-
-function findHeight(){
-	//window.alert('hello');
-	var box = document.getElementsByClassName('box');
+function setHeight(){
+	var box = document.getElementsByClassName('inner')[0];
 	var list = document.getElementsByClassName('TOuter');
+	var height = $(box).offset().top;
 	var TitleBar = document.getElementById('wrapper');
-	var box0;
-	//window.alert('hello');
-	for (var i=0, max=box.length; i<max; i++){
-		var start = (($(box[i]).attr('style')).split(';'))[1].split(':');
-		start = start[1].replace('vh', '');
-		if (start == 0){
-			box0= box[i];
-			break;
-		} else {
-			continue;
-		};
-	};
-	var WH = window.innerHeight;
-	var BY= $(box0).offset().top;
-	var TY= $(TitleBar).offset().top;
-	bY = ((BY - TY)/WH)*100;
-	BY = (BY - TY)/WH;
-	$(list).css('margin-top', bY+'vh');
-	
+	height = ((height-($(TitleBar).offset().top))/window.innerHeight)*100;
+	$(list).css('margin-top', height+'vh');
 }
 
-findHeight();
-$(window).resize(findHeight);
+
+setHeight();
+$(window).resize(setHeight);
 
 }
 
