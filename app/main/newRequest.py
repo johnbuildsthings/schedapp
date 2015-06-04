@@ -5,6 +5,8 @@ import requests
 import urllib
 import json
 from . import Data
+import time
+from mock import MagicMock
 
 data = Data.configData()
 
@@ -15,13 +17,42 @@ def Request(key, format, website):
     url = (website)
     api_req = url + 'api/event/list?' + data
     
-    req = requests.get(api_req)
+    session = requests.Session()
+    session.mount("http://", requests.adapters.HTTPAdapter(max_retries=15))
+
+    req = session.get(api_req)
+    '''
+    except requests.exceptions.ConnectionError:
+        print 'trying again in 30 seconds'
+        time.sleep(30)
+        print 'trying again now'
+        req = requests.get(api_req)
+    '''
     apiResponse = req.text
     if format == 'json':
         load = json.loads(apiResponse)
     else:
         raise ValueError('unexpected request format')    
     return load
+
+
+
+##===========unit test of bad connection============
+"""
+def connection_error():
+    raise requests.expections.ConnectionError
+
+class TestSuitabilityFunction(object):
+    def test_connection_error(self):
+        requests.get = MagicMock(side_effect=connection_error)
+        with self.assertRaises(requests.expections.ConnectionError) as cm:
+            resp = Request('93c5b2c7d6a01f93c1fc704e6870ca9d', 'json', "http://m3aawg34.sched.org/")
+            exception = cm.exception
+
+t = TestSuitabilityFunction()
+t.test_connection_error()
+"""
+##==============end test=============================
 
 
 
