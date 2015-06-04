@@ -5,8 +5,8 @@ import requests
 import urllib
 import json
 from . import Data
-import time
-from mock import MagicMock
+##import time
+##from mock import MagicMock
 
 data = Data.configData()
 
