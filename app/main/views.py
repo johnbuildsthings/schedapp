@@ -1,34 +1,30 @@
 #encoding: utf-8
 from flask import render_template
 from . import main
-from . import Data
-import newRequest as ebd
+from controller import Data
+# import newRequest as ebd
+from controller import app
+
+
 
 data = Data.configData()
 
 def stuff(key, cookies, website):
     format = 'json'
-    load=ebd.Request(key, format, website)
+    load=ebd.Request()
     
-    Monday = ebd.Day('monday', load)
-    Tuesday = ebd.Day('tuesday', load)
-    Wednesday = ebd.Day('wednesday', load)
-    Thursday = ebd.Day('thursday', load)
-    Friday = ebd.Day('friday', load)
-    
-    week={'Monday': Monday, 'Tuesday': Tuesday, 'Wednesday': Wednesday, 
-    'Thursday': Thursday, 'Friday': Friday}
+    week = app.weeksEvents();
 
-    rooms =  {i : ebd.INFO(week.get(i), website, cookie=cookies ).getRooms() for i in week}
+    rooms =  {i : ebd.INFO(week.get(i)).getRooms() for i in week}
 
-    roomEvents = {i : ebd.INFO(week.get(i), website, cookie=cookies).getEventsPerRoom() for i in week}
+    roomEvents = {i : ebd.INFO(week.get(i)).getEventsPerRoom() for i in week}
     
-    eventInfo = {i : ebd.INFO(week.get(i), website, cookie=cookies).getEventInfo() for i in week}
+    eventInfo = {i : ebd.INFO(week.get(i)).getEventInfo() for i in week}
     
     return {'week':week, 'rooms':rooms, 'roomEvents':roomEvents, 'eventInfo':eventInfo}
 
-stuff = stuff(data['key'], data['cookie'], data['website'])
-
+# stuff = stuff(data['key'], data['cookie'], data['website'])
+stuff = app.weeksEvents()
 
 
 @main.route('/')
