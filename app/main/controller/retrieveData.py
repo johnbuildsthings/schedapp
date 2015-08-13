@@ -3,14 +3,12 @@ import urllib
 import requests
 import time
 import json
-# sys.path.append(os.path.realpath('..'))
 import Data
 
 
 def makePath(realtivePath):
   return os.path.join(os.path.dirname(__file__), os.path.realpath(realtivePath))
 
-# print dumpFile
 
 def write(data, filename):
   dumpFile = makePath(filename)
@@ -46,7 +44,6 @@ def Request():
   apiResponse = response.text
   write(apiResponse, '../../data/jsonDump.json')
 
-# Request()
 ##===========unit test of bad connection============
 """
 def connection_error():

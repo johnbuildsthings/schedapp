@@ -1,5 +1,3 @@
-# import sys, os
-# sys.path.append(os.path.realpath('..'))
 import Data
 data = Data.configData()
 

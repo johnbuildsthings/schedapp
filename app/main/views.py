@@ -2,7 +2,6 @@
 from flask import render_template
 from . import main
 from controller import Data
-# import newRequest as ebd
 from controller import app
 
 

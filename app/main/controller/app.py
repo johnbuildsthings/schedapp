@@ -30,4 +30,3 @@ def weeksEvents():
   return {'week':week, 'rooms':rooms, 'roomEvents':roomEvents, 'eventInfo':eventInfo}
 
 
-# print Monday.daysEvents

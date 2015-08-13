@@ -152,9 +152,9 @@ class Info(object):
     return self.eventInfo
         
 
-if __name__ == '__main__':
-  # print data
-  load=Request()
+# if __name__ == '__main__':
+#   # print data
+#   load=Request()
 
   # wednesday=Day('wednesday', load)
   # ##print wednesday.daysEvents
