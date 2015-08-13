@@ -9,21 +9,6 @@ from controller import app
 
 data = Data.configData()
 
-def stuff(key, cookies, website):
-    format = 'json'
-    load=ebd.Request()
-    
-    week = app.weeksEvents();
-
-    rooms =  {i : ebd.INFO(week.get(i)).getRooms() for i in week}
-
-    roomEvents = {i : ebd.INFO(week.get(i)).getEventsPerRoom() for i in week}
-    
-    eventInfo = {i : ebd.INFO(week.get(i)).getEventInfo() for i in week}
-    
-    return {'week':week, 'rooms':rooms, 'roomEvents':roomEvents, 'eventInfo':eventInfo}
-
-# stuff = stuff(data['key'], data['cookie'], data['website'])
 stuff = app.weeksEvents()
 
 
