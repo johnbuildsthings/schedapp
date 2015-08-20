@@ -2,14 +2,16 @@ import retrieveData
 import parseData
 import getColor
 import parseEventInfo
-
+import startup
     
-def update():
-  retrieveData.Request('app/data/jsonDump.json')
-  getColor.getColors(retrieveData.read('app/data/jsonDump.json'))
+# def update():
+#   retrieveData.Request('app/data/jsonDump.json')
+#   getColor.getColors(retrieveData.read('app/data/jsonDump.json'))
 
 def weeksEvents():
-  
+
+  startup.update()
+
   data = retrieveData.read('app/data/jsonDump.json')
 
   Monday = parseData.Day('monday', data)

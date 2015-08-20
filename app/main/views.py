@@ -9,10 +9,9 @@ from controller import app
 data = Data.configData()
 
 #initialize data storage
-app.update()
+# app.update()
 
 stuff = app.weeksEvents()
-print stuff.get('week')
 
 @main.route('/')
 def index():
