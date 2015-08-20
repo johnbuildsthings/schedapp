@@ -116,13 +116,16 @@ class Info(object):
   def EventInfo(self):
     for event in self.day:
       name = event['name']
-      Type = event['event_type']
+      try:
+        Type = event['event_type']
+      except KeyError:
+        Type = 'unknown'
 
       try:
         color = self.colors[Type]
         if(color == 'no color'):
           color = '#ffffff'
-      except AttributeError:
+      except (AttributeError, KeyError):
         color = '#ffffff'
       start = event['eventStart']
       end = event['eventEnd']

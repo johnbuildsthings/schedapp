@@ -8,8 +8,11 @@ from controller import app
 
 data = Data.configData()
 
-stuff = app.weeksEvents()
+#initialize data storage
+app.update()
 
+stuff = app.weeksEvents()
+print stuff.get('week')
 
 @main.route('/')
 def index():

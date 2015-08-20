@@ -31,14 +31,18 @@ def getColors(events):
 
   for event in events:
     name = event['name']
-    Type = event['event_type']
+    try:
+      Type = event['event_type']
+    except KeyError:
+      Type = 'unknown'
+
     try:
       color = findEventColor(name, soup)
     except AttributeError:
       color = '#ffffff'
     eventType[Type] = color
 
-  retrieveData.write(json.dumps(eventType), '../../data/colors.json')
+  retrieveData.write(json.dumps(eventType), 'app/data/colors.json')
 
-# events = retrieveData.read('app/data/jsonDump.json')
+# events = retrieveData.read('../../data/jsonDump.json')
 # getColors(events)

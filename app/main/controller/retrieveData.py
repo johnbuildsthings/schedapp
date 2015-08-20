@@ -22,7 +22,7 @@ def read(filename):
     json_file.close()
     return json.loads(info)
 
-def Request():
+def Request(dumpFile):
   data = Data.configData()
   key = data['key']
   format = 'json'
@@ -42,7 +42,8 @@ def Request():
     response = requests.get(api_req)
   
   apiResponse = response.text
-  write(apiResponse, '../../data/jsonDump.json')
+  File = makePath(dumpFile)
+  write(apiResponse, File)
 
 ##===========unit test of bad connection============
 """

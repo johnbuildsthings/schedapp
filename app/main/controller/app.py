@@ -4,9 +4,9 @@ import getColor
 import parseEventInfo
 
     
-def updata():
-  retrieveData.Request()
-  getColor.getColors();
+def update():
+  retrieveData.Request('app/data/jsonDump.json')
+  getColor.getColors(retrieveData.read('app/data/jsonDump.json'))
 
 def weeksEvents():
   
