@@ -23,12 +23,21 @@ def weeksEvents():
   week = {'Monday': Monday, 'Tuesday': Tuesday, 'Wednesday': Wednesday, 
   'Thursday': Thursday, 'Friday': Friday}
 
-  rooms =  {i : parseEventInfo.Info(week.get(i)).getRooms() for i in week}
+  rooms = {}
+  roomEvents = {}
+  eventInfo = {}
 
-  roomEvents = {i : parseEventInfo.Info(week.get(i)).getEventsPerRoom() for i in week}
+  # for i in week:
+  #   rooms[i] = parseEventInfo.Info(week.get(i)).getRooms()
+  #   roomEvents[i] = parseEventInfo.Info(week.get(i)).getEventInfo()
+  #   eventInfo[i] = parseEventInfo.Info(week.get(i)).getEventInfo()
+
+  rooms =  dict((i , parseEventInfo.Info(week.get(i)).getRooms()) for i in week)
+
+  roomEvents = dict((i , parseEventInfo.Info(week.get(i)).getEventsPerRoom()) for i in week)
   
-  eventInfo = {i : parseEventInfo.Info(week.get(i)).getEventInfo() for i in week}
-    
+  eventInfo = dict((i : parseEventInfo.Info(week.get(i)).getEventInfo()) for i in week)
+  # print [rooms]  
   return {'week':week, 'rooms':rooms, 'roomEvents':roomEvents, 'eventInfo':eventInfo}
 
 
