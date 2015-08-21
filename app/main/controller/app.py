@@ -36,8 +36,8 @@ def weeksEvents():
 
   roomEvents = dict((i , parseEventInfo.Info(week.get(i)).getEventsPerRoom()) for i in week)
   
-  eventInfo = dict((i : parseEventInfo.Info(week.get(i)).getEventInfo()) for i in week)
-  # print [rooms]  
+  eventInfo = dict((i , parseEventInfo.Info(week.get(i)).getEventInfo()) for i in week)
+  # print [rooms]   
   return {'week':week, 'rooms':rooms, 'roomEvents':roomEvents, 'eventInfo':eventInfo}
 
 
