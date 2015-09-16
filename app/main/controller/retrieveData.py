@@ -54,7 +54,7 @@ class TestSuitabilityFunction(object):
     def test_connection_error(self):
         requests.get = MagicMock(side_effect=connection_error)
         with self.assertRaises(requests.expections.ConnectionError) as cm:
-            resp = Request('93c5b2c7d6a01f93c1fc704e6870ca9d', 'json', "http://m3aawg34.sched.org/")
+            resp = Request(key, 'json', "http://m3aawg34.sched.org/")
             exception = cm.exception
 
 t = TestSuitabilityFunction()
